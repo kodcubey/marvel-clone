@@ -1,11 +1,38 @@
 <template>
-    <h4>Home Page</h4>
+  <div class="card-container" v-if="isLoad">
+    <CardComponent v-for="comic in comics" :key="comic.id" :comicArr="comic" />
+  </div>
+  <div v-else>
+    <LoaderBar />
+  </div>
 </template>
 <script>
+import { mapActions, mapState } from "vuex";
+import CardComponent from "./CardComponent.vue";
+import LoaderBar from "./LoaderBar.vue";
+
 export default {
-    name: "HomePage",
-}
+  name: "HomePage",
+  mounted() {
+    this.getComicsData();
+  },
+  computed: {
+    ...mapState(["comics", "isLoad"]),
+  },
+  methods: {
+    ...mapActions(["getComicsData"]),
+  },
+  components: {
+    CardComponent,
+    LoaderBar,
+  },
+};
 </script>
-<style lang="">
-    
+<style scoped>
+.card-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 </style>

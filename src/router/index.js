@@ -2,7 +2,7 @@ import { createWebHistory, createRouter } from "vue-router";
 import HomePage from "../components/HomePage.vue";
 import DetailPage from "../components/DetailPage.vue";
 import NotFound from "../components/NotFound.vue";
-
+import FavoritePage from "../components/FavoritePage.vue";
 const routes = [
   {
     path: "/",
@@ -10,9 +10,14 @@ const routes = [
     component: HomePage,
   },
   {
-    path: "/about/:id",
+    path: "/detail/:id",
     name: "DetailPage",
     component: DetailPage,
+  },
+  {
+    path: "/favorite",
+    name: "FavoritePage",
+    component: FavoritePage
   },
   {
     path: "/:catchAll(.*)",

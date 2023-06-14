@@ -1,6 +1,8 @@
 <template>
   <HeaderBar />
-  <router-view />
+  <div class="container">
+    <router-view />
+  </div>
   <FooterBar />
 </template>
 
@@ -15,14 +17,24 @@ export default {
   },
 };
 </script>
-
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  font-size: 18px;
+}
+
+.container {
+  width: 1200px;
+  margin: 2% auto;
 }
 </style>

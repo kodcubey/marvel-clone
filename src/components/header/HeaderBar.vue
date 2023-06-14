@@ -1,12 +1,14 @@
 <template lang="">
-  <div id="nav">
+  <header>
     <router-link to="/">Home</router-link> |
-    <router-link to="/about/3">Detail Page</router-link>
-  </div>
+    <router-link to="/favorite"
+      >Favorite Page <i class="fa-sharp fa-solid fa-heart"></i
+    ></router-link>
+  </header>
 </template>
 <script>
 export default {
   name: "HeaderBar",
 };
 </script>
-<style lang=""></style>
+<style scoped></style>

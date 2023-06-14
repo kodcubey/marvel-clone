@@ -1,11 +1,15 @@
-<template lang="">
-    Footer Bar
+<template>
+  <div class="footer-content">
+    <p>@copyright {{ new Date().getFullYear() }}</p>
+  </div>
 </template>
 <script>
 export default {
-    name: "FooterBar",
-}
+  name: "FooterBar",
+};
 </script>
-<style lang="">
-    
+<style scoped>
+.footer-content {
+  clear: left;
+}
 </style>
