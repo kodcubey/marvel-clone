@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <a :href="'detail/' + comicArr.id">
+    <router-link :to="'detail/'+comicArr.id">
       <img
         v-bind:src="
           comicArr.images.length != 0
@@ -9,7 +9,7 @@
         "
         alt="not found"
       />
-    </a>
+    </router-link>
     <p>{{ comicArr.title }}</p>
   </div>
 </template>
