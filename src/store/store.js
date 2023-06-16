@@ -18,6 +18,7 @@ export default createStore({
     },
 
     addFavoriteItem(state, data) {
+      state.buttonText = "Favorilerden Çıkar";
       let getData = JSON.parse(sessionStorage.getItem("favorites"));
       let changeData = JSON.parse(JSON.stringify(data));
       let isTrue = false;
@@ -54,6 +55,7 @@ export default createStore({
     },
 
     removeFavoriteItem(state, id) {
+      state.buttonText = "Favorilere Ekle";
       let getData = JSON.parse(sessionStorage.getItem("favorites"));
       const newGetData = getData.filter((items) => items.id !== id);
       state.favoriteitem = newGetData;

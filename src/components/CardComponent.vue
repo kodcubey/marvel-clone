@@ -10,7 +10,18 @@
         alt="not found"
       />
     </router-link>
-    <button class="favorite-button" @click="removeFavoriteItem(comicArr.id)">Favoriye Ekle</button>
+    <div style="display: inline" @click="toggle">
+      <button
+        class="favorite-button"
+        @click="
+          checkFavoriteItem(comicArr.id)
+            ? removeFavoriteItem(comicArr.id)
+            : addFavoriteItem(comicArr)
+        "
+      >
+        {{ isText ? "Favorilerden Çıkar" : "Favorilere Ekle" }}
+      </button>
+    </div>
     <p>{{ comicArr.title }}</p>
   </div>
 </template>
@@ -22,11 +33,30 @@ export default {
     comicArr: Object,
   },
   computed: {
-    ...mapState(['favoriteitem']),
+    ...mapState(["favoriteitem", "buttonText"]),
+  },
+  data() {
+    return {
+      isText: this.checkFavoriteItem(this.comicArr.id),
+    };
   },
   methods: {
-    ...mapMutations(['addFavoriteItem', 'removeFavoriteItem']),
-  }
+    ...mapMutations(["addFavoriteItem", "removeFavoriteItem"]),
+    checkFavoriteItem(id) {
+      let getData = JSON.parse(sessionStorage.getItem("favorites"));
+      for (let i = 0; i < getData.length; i++) {
+        if (getData[i].id == id) {
+          return true;
+        }
+      }
+
+      return false;
+    },
+
+    toggle() {
+      this.isText = !this.isText;
+    },
+  },
 };
 </script>
 <style scoped>
@@ -55,7 +85,7 @@ img:hover {
   background-color: #151515;
   color: white;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   font-weight: bold;
   margin-top: 2%;
