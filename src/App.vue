@@ -9,11 +9,27 @@
 <script>
 import HeaderBar from "./components/header/HeaderBar.vue";
 import FooterBar from "./components/footer/FooterBar.vue";
+import { mapState } from "vuex";
 export default {
   name: "App",
   components: {
     HeaderBar,
     FooterBar,
+  },
+  mounted() {
+    var checkFavoriteStorage = sessionStorage.getItem("favorites");
+
+    if (!checkFavoriteStorage) {
+      sessionStorage.setItem("favorites", JSON.stringify([]));
+    }
+
+    this.$store.state.favoriteitem = JSON.parse(
+      sessionStorage.getItem("favorites")
+    );
+  },
+
+  computed: {
+    ...mapState("favoriteitem"),
   },
 };
 </script>

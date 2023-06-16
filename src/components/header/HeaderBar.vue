@@ -2,18 +2,28 @@
   <header>
     <nav>
       <router-link to="/"><p>ana sayfa</p></router-link>
+      <img class="logo" src="@/assets/logo.png" />
       <div class="dropdown">
-        <span><i class="fa-sharp fa-regular fa-heart custom-heart"></i> <span class="favorite-count">0</span></span>
+        <span class="favorite-text"
+          >FAVORİLERİM <i class="fa fa-heart" aria-hidden="true"></i
+        ></span>
         <div class="dropdown-content">
-          <p>Hello World!</p>
+          <p v-for="favorite in favoriteitem" :key="favorite.id">
+            {{ favorite.title }}
+          </p>
         </div>
       </div>
     </nav>
   </header>
 </template>
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: "HeaderBar",
+  computed: {
+    ...mapState(['favoriteitem'])
+  }
 };
 </script>
 <style scoped>
@@ -26,10 +36,14 @@ header {
   background-color: #202020;
   z-index: 3;
 }
+.logo {
+  width: 10%;
+}
 header nav {
   width: 100%;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   padding: 15px;
 }
 
@@ -63,6 +77,10 @@ header nav a:first-child {
 }
 
 .favorite-count {
+  color: white;
+}
+
+.favorite-text {
   color: white;
 }
 </style>

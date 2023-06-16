@@ -10,16 +10,23 @@
         alt="not found"
       />
     </router-link>
-    <button class="favorite-button">Favoriye Ekle</button>
+    <button class="favorite-button" @click="removeFavoriteItem(comicArr.id)">Favoriye Ekle</button>
     <p>{{ comicArr.title }}</p>
   </div>
 </template>
 <script>
+import { mapMutations, mapState } from "vuex";
 export default {
   name: "CardComponent",
   props: {
     comicArr: Object,
   },
+  computed: {
+    ...mapState(['favoriteitem']),
+  },
+  methods: {
+    ...mapMutations(['addFavoriteItem', 'removeFavoriteItem']),
+  }
 };
 </script>
 <style scoped>

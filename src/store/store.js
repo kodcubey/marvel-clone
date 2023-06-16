@@ -4,18 +4,60 @@ export default createStore({
   state: {
     comics: [],
     comicsId: [],
+    favoriteitem: [],
     isLoad: false,
   },
   getters: {},
   mutations: {
     setComicsData(state, data) {
-      console.log(data.data.results);
       state.comics = data.data.results;
     },
 
     setComicsId(state, data) {
-      console.log(data.data.results[0]);
       state.comicsId = data.data.results[0];
+    },
+
+    addFavoriteItem(state, data) {
+      let getData = JSON.parse(sessionStorage.getItem("favorites"));
+      let changeData = JSON.parse(JSON.stringify(data));
+      let isTrue = false;
+      // datada veri varsa
+      if (getData.length != 0) {
+        getData.map((element) => {
+          // data da bulunan itemlerın varlığı kontrol ediliyor
+          if (element.id == changeData.id) {
+            isTrue = true;
+          }
+        });
+
+        // item yoksa ekleyip güncellenecek
+        if (!isTrue) {
+          state.favoriteitem.push(changeData);
+          sessionStorage.setItem(
+            "favorites",
+            JSON.stringify(state.favoriteitem)
+          );
+        } else {
+          // item varsa var olan değeri alsın ve üzerine eklesin
+          state.favoriteitem = getData;
+          state.favoriteitem.push(changeData);
+          sessionStorage.setItem(
+            "favorites",
+            JSON.stringify(state.favoriteitem)
+          );
+        }
+      } else {
+        // datada hiçbir veri yoksa
+        state.favoriteitem.push(changeData);
+        sessionStorage.setItem("favorites", JSON.stringify(state.favoriteitem));
+      }
+    },
+
+    removeFavoriteItem(state, id) {
+      let getData = JSON.parse(sessionStorage.getItem("favorites"));
+      const newGetData = getData.filter((items) => items.id !== id);
+      state.favoriteitem = newGetData;
+      sessionStorage.setItem("favorites", JSON.stringify(state.favoriteitem));
     },
   },
   actions: {
