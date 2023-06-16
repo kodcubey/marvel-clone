@@ -1,4 +1,5 @@
 <template>
+  <h1 class="comic-title">~ comics ~</h1>
   <div class="card-container" v-if="isLoad">
     <CardComponent v-for="comic in comics" :key="comic.id" :comicArr="comic" />
   </div>
@@ -34,5 +35,8 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+.comic-title {
+  font-size: 6rem;
 }
 </style>
