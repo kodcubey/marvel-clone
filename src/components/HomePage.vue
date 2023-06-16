@@ -1,5 +1,6 @@
 <template>
   <h1 class="comic-title">~ comics ~</h1>
+  <hr>
   <div class="card-container" v-if="isLoad">
     <CardComponent v-for="comic in comics" :key="comic.id" :comicArr="comic" />
   </div>
@@ -38,5 +39,9 @@ export default {
 }
 .comic-title {
   font-size: 6rem;
+}
+
+hr {
+  border: 2px solid #222222;
 }
 </style>
