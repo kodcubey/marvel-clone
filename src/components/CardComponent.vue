@@ -12,7 +12,7 @@
     </router-link>
     <div style="display: inline" @click="toggle">
       <button
-        class="favorite-button"
+        :class="isText ? 'unfavorite-button' : 'favorite-button'"
         @click="
           checkFavoriteItem(comicArr.id)
             ? removeFavoriteItem(comicArr.id)
@@ -83,6 +83,20 @@ img:hover {
   border: 0;
   background: none;
   background-color: #151515;
+  color: white;
+  cursor: pointer;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 2%;
+}
+
+.unfavorite-button {
+  width: 100%;
+  height: 10%;
+  border: 0;
+  background: none;
+  background-color: #e62429;
   color: white;
   cursor: pointer;
   font-size: 0.8rem;
