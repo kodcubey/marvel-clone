@@ -9,8 +9,14 @@
         "
         alt="not found"
       />
-      <div>
-      </div>
+      <strong><h4>Designers</h4></strong>
+      <CreatorsComponent
+        v-for="creator in comicsId.creators.items"
+        :key="creator.name"
+        :name="creator.name"
+        :resourceURI="creator.resourceURI"
+        :role="creator.role"
+      />
     </div>
     <div class="content-text">
       <h1>{{ comicsId.title }}</h1>
@@ -26,6 +32,7 @@
 <script>
 import { mapActions, mapState } from "vuex";
 import LoaderBar from "./LoaderBar.vue";
+import CreatorsComponent from "./CreatorsComponent.vue";
 export default {
   name: "DetailPage",
   mounted() {
@@ -37,7 +44,7 @@ export default {
   methods: {
     ...mapActions(["getComicsId"]),
   },
-  components: { LoaderBar },
+  components: { LoaderBar, CreatorsComponent },
 };
 </script>
 <style scoped>
@@ -72,5 +79,11 @@ img {
 .content-text {
   width: 40%;
   margin: 0 50px;
+}
+
+.image-container strong {
+  padding-top: 10px;
+  font-size: 2rem;
+  text-align: left;
 }
 </style>
