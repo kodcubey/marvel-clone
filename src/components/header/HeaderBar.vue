@@ -79,6 +79,12 @@ header nav {
 header nav a:first-child {
   text-decoration: none;
   color: white;
+  font-size: 1.5rem;
+  transition: all 1s ease;
+}
+
+header nav a:first-child:hover {
+  color: #e62429;
 }
 .dropdown {
   position: relative;
@@ -125,6 +131,7 @@ header nav a:first-child {
 
 .favorite-text {
   color: white;
+  font-size: 1.5rem;
 }
 
 .favorite-text i {
