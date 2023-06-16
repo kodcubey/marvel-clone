@@ -10,9 +10,6 @@
         alt="not found"
       />
       <div>
-        <a>Favoriye Ekle <i class="fa-sharp fa-regular fa-heart"></i></a>
-        <!-- <i class="fa-sharp fa-regular fa-heart"></i>
-        <i class="fa fa-heart" aria-hidden="true"></i> -->
       </div>
     </div>
     <div class="content-text">

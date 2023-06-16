@@ -35,6 +35,6 @@ export default {
 
 .container {
   width: 1200px;
-  margin: 2% auto;
+  margin: 5% auto;
 }
 </style>
