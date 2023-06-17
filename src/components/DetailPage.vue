@@ -10,13 +10,15 @@
         alt="not found"
       />
       <strong><h4>Designers</h4></strong>
-      <CreatorsComponent
-        v-for="creator in comicsId.creators.items"
-        :key="creator.name"
-        :name="creator.name"
-        :resourceURI="creator.resourceURI"
-        :role="creator.role"
-      />
+      <div v-if="comicsId && comicsId.creators">
+        <CreatorsComponent
+          v-for="creator in comicsId.creators.items"
+          :key="creator.name"
+          :name="creator.name"
+          :resourceURI="creator.resourceURI"
+          :role="creator.role"
+        />
+      </div>
     </div>
     <div class="content-text">
       <h1>{{ comicsId.title }}</h1>

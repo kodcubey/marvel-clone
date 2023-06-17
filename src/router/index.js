@@ -17,10 +17,11 @@ const routes = [
   {
     path: "/favorite",
     name: "FavoritePage",
-    component: FavoritePage
+    component: FavoritePage,
   },
   {
     path: "/:catchAll(.*)",
+    name: "NotFound",
     component: NotFound,
   },
 ];
