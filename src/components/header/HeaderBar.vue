@@ -10,7 +10,7 @@
         </span>
         <div class="dropdown-content">
           <p v-for="favorite in favoriteitem" :key="favorite.id">
-            <router-link :to="'detail/' + favorite.id">{{
+            <router-link :to="'/detail/' + favorite.id">{{
               favorite.title
             }}</router-link>
           </p>
